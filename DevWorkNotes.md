@@ -141,3 +141,11 @@ Schema Settings
 `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
 
 ## Development work
+
+Created server and added code. 
+- included requirements.
+- set the port 3006
+- set db connection to `'mongodb://localhost:27017/social-media'` like in module example.
+
+Create the model(s)
+- User as outlined above
