@@ -15,7 +15,8 @@ app.use(express.json());
 //manages payload
 app.use(express.urlencoded({ extended: true }));
 //Connects to routes dir
-app.use(require("./routes"));
+//!Turned off until routes are created.
+//!app.use(require("./routes"));
 
 // Mongoose functions/connection to social-media db
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/social-media', {
