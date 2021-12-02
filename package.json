@@ -1,0 +1,30 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "coding bootcamp challenge 18. create the backend of a mongoDB spcial media network",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuckArroyo/challenge18.git"
+  },
+  "keywords": [
+    "student",
+    "project",
+    "social",
+    "media",
+    "backend"
+  ],
+  "author": "DeveloperDuckArroyo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuckArroyo/challenge18/issues"
+  },
+  "homepage": "https://github.com/DuckArroyo/challenge18#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.14"
+  }
+}
