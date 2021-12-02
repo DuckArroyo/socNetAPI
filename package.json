@@ -4,7 +4,8 @@
   "description": "coding bootcamp challenge 18. create the backend of a mongoDB spcial media network",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -26,5 +27,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.0.14"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

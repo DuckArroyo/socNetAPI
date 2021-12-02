@@ -14,9 +14,9 @@ Video Walkthrough [Link]()
 
 ## Description
 
-Create an API for a social network web application. The application will use MongoDB database and Mongoose ODM., and JavaScript. 
+Create an API for a social network web application. The application will use MongoDB database and Mongoose ODM., and JavaScript.
 
-To see my development notes visit [DevWorkNotes.md]()
+To see my development notes visit [DevWorkNotes.md](https://github.com/DuckArroyo/challenge18/blob/main/DevWorkNotes.md)
 
 ## Graded criteria
 
@@ -34,14 +34,13 @@ To see my development notes visit [DevWorkNotes.md]()
   - /api/thoughts/:thoughtId/reactions
   - POST, DELETE
 
-Video Walkthrough - Link 
-
+Video Walkthrough - Link
 
 ## Required installations for code duplication
 
 npm - npm install
 
-.env - npm install dotenv
+nodemon - npm install --save-dev nodemon
 
 express - npm install express
 
@@ -50,10 +49,8 @@ Mongoose - npm install mongoose
 ## The commandments
 
 "scripts": {
-"dev": "nodemon server.js",
-"test": "jest",
 "start": "node server.js",
-~~"seed": "node seeds/index.js"~~
+"dev": "nodemon server.js"
 },
 
 # Contributions by:

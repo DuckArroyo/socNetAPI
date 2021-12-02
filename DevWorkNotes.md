@@ -1,4 +1,4 @@
-Start
+## Requirements
 
 Create structure
 Folders
@@ -20,6 +20,7 @@ Install packages
 - npm init
 - npm install express
 - npm install mongoose
+- npm install --save-dev nodemon
 
 ## Models
 
@@ -138,3 +139,5 @@ Schema Settings
 ``POST`` to create a reaction stored in a single thought's `reactions` array field
 
 `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
+
+## Development work
