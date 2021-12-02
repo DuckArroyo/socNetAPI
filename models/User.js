@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const Thought = require("./Thought");
 
 const UserSchema = new Schema(
   {
@@ -13,7 +14,12 @@ const UserSchema = new Schema(
       required: "You must enter an email!",
       match: [/.+@.+\..+/, "Please enter a valid e-mail address!"],
     },
-    thoughts: [],
+    thoughts: [
+      {
+        type: String,
+        ref: "Thought",
+      },
+    ],
     // !Array of _id values referencing the Thought model
     friends: [],
     // !Array of _id must reference User model (self-reference)
