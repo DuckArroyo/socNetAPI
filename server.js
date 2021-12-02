@@ -1,13 +1,30 @@
-//Require express
+// Require express
+const express = require('express');
 
-//Require mongoose
+// Require mongoose
+const mongoose = require ('mongoose');
 
-//declare app for express
+// Declare app for express
+const app = express();
 
-// declare port
+// Declare port
+const PORT = process.env.PORT || 3006
 
-//middleware
+// Middleware
+app.use(express.json());
+//manages payload
+app.use(express.urlencoded({ extended: true }));
+//Connects to routes dir
+app.use(require("./routes"));
 
-//Mongoose functions
+// Mongoose functions/connection to social-media db
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/social-media', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
-//app.listen
+// Use this to log mongo queries being executed!
+mongoose.set('debug', true);
+
+// App.listen
+app.listen(PORT, () => console.log(`Connection stablished, serving em beets on: ${PORT}`));
