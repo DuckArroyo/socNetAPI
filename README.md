@@ -16,6 +16,8 @@ Video Walkthrough [Link]()
 
 Create an API for a social network web application. The application will use MongoDB database and Mongoose ODM., and JavaScript. 
 
+To see my development notes visit [DevWorkNotes.md]()
+
 ## Graded criteria
 
 - Models must be defined
