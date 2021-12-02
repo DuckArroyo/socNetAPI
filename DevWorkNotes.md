@@ -25,22 +25,22 @@ Install packages
 
 ### `User`
 
-    - `username`
+- `username`
         - String
         - Unique
         - Required
         - Trimmed
 
-    - `email`
+- `email`
         - String
         - Required
         - Unique
         - Must match a valid email address (look into Mongoose's matching validation)
 
-    - `thoughts`
+- `thoughts`
         - Array of _id values referencing the `Thought` model
 
-    - `friends`
+- `friends`
         - Array of _id values referencing the `User` model (self-reference)
 
 Schema Settings
@@ -49,21 +49,21 @@ Schema Settings
 
 ### `Thought`
 
-    - `thoughtText`
+- `thoughtText`
         - String
         - Required
         - Must be between 1 and 280 characters
 
-    - `createdAt`
+- `createdAt`
         - Date
         - Set default value to the current timestamp
         - Use a getter method to format the timestamp on query
 
-    - `username` (The user that created this thought)
+- `username` (The user that created this thought)
         - String
         - Required
 
-    - `reactions` (These are like replies)
+- `reactions` (These are like replies)
         - Array of nested documents created with the `reactionSchema`
 
 Schema Settings
@@ -72,20 +72,20 @@ Schema Settings
 
 #### `Reaction (SCHEMA ONLY)`
 
-    - `reactionId`
+- `reactionId`
         - Use Mongoose's ObjectId data type
         - Default value is set to a new ObjectId
 
-    - `reactionBody`
+- `reactionBody`
         - String
         - Required
         - 280 character maximum
 
-    - `username`
+- `username`
         - String
         - Required
 
-    - `createdAt`
+- `createdAt`
         - Date
         - Set default value to the current timestamp
         - Use a getter method to format the timestamp on query
