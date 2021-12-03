@@ -7,9 +7,8 @@ const ReactionSchema = new Schema({
   },
   reactionBody: {
     type: String,
-    required: "You must select a reaction must be 280 characters minimum!",
-    //!Add character min
-    validate: [({ length }) => length >= 6, "Password should be longer."],
+    required: "You must select a reaction must be at least 1 character minimum!",
+    validate: [({ length }) => length >= 1, "Your reaction needs a message"],
 
   },
   username: {
