@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User } = require("../models/User");
 
 const userController = {
   getAllUser(req, res) {
@@ -59,4 +59,4 @@ const userController = {
   },
 };
 
-module.exports.userController;
+module.exports = userController;
