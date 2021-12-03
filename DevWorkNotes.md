@@ -125,7 +125,7 @@ Create the model(s)
 - Thought as outlined above
 - Reaction as outline above, within Thought model
 
-## Adding controllers.
+## Create controllers.
 
 Using the same format as module project.
 
@@ -134,9 +134,9 @@ Using the same format as module project.
 
 to separate code.
 
-Create routes
+## Create routes
 
 - user-routes
 - thought-routes
-
+- index - jumped the gun and created the index before the routes.
 they work as calls to controllers
