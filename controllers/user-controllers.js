@@ -27,7 +27,7 @@ const userController = {
 
   createUser({ body }, res) {
     User.create(body)
-      .then((dbUserData) => res.json(dbUserData))
+      .then((dbCreateUser) => res.json(dbCreateUser))
       .catch((err) => res.satus(400).json(err));
   },
 
@@ -36,24 +36,24 @@ const userController = {
       new: true,
       runValidators: true,
     })
-      .then((dbUserData) => {
-        if (!dbUserData) {
+      .then((dbUpdateUser) => {
+        if (!dbUpdateUser) {
           res.status(404).json({ message: "No User found with this ID!" });
           return;
         }
-        res.json(dbUserData);
+        res.json(dbUpdateUser);
       })
       .catch((err) => res.status(400).json(err));
   },
 
   deleteUser({ params }, res) {
     User.findOneAndDelete({ _id: params.id })
-      .then((dbUserData) => {
-        if (!dbUserData) {
+      .then((dbRemoveUser) => {
+        if (!dbRemoveUser) {
           res.status(404).json({ message: "No User found with this ID!" });
           return;
         }
-        res.json(dbUserData);
+        res.json(dbRemoveUser);
       })
       .catch((err) => res.status(400).json(err));
   },
