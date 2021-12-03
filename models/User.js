@@ -5,7 +5,7 @@ const UserSchema = new Schema(
     userName: {
       type: String,
       required: "You must select a username!",
-      //!Declare unique
+      unique: true,
       trim: true,
     },
     email: {
@@ -15,13 +15,16 @@ const UserSchema = new Schema(
     },
     thoughts: [
       {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: "Thought",
       },
     ],
-    // !Array of _id values referencing the Thought model
-    friends: [],
-    // !Array of _id must reference User model (self-reference)
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     toJSON: {
