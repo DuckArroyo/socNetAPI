@@ -15,7 +15,6 @@ app.use(express.json());
 //manages payload
 app.use(express.urlencoded({ extended: true }));
 //Connects to routes dir
-//!Turned off until routes are created.
 app.use(require("./routes"));
 
 // Mongoose functions/connection to social-media db
