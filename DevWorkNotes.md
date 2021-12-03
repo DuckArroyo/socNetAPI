@@ -139,4 +139,8 @@ to separate code.
 - user-routes
 - thought-routes
 - index - jumped the gun and created the index before the routes.
-they work as calls to controllers
+  they work as calls to controllers
+
+## Infrastructure
+
+infrastructure is set but need to test, 500 errors are happening when testing routes. will revisit with fresh eyes.
