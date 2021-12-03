@@ -26,23 +26,13 @@ Install packages
 
 ### `User`
 
-- `username`
-        - String
-        - Unique
-        - Required
-        - Trimmed
+- `username` - String - Unique - Required - Trimmed
 
-- `email`
-        - String
-        - Required
-        - Unique
-        - Must match a valid email address (look into Mongoose's matching validation)
+- `email` - String - Required - Unique - Must match a valid email address (look into Mongoose's matching validation)
 
-- `thoughts`
-        - Array of _id values referencing the `Thought` model
+- `thoughts` - Array of \_id values referencing the `Thought` model
 
-- `friends`
-        - Array of _id values referencing the `User` model (self-reference)
+- `friends` - Array of \_id values referencing the `User` model (self-reference)
 
 Schema Settings
 
@@ -50,22 +40,13 @@ Schema Settings
 
 ### `Thought`
 
-- `thoughtText`
-        - String
-        - Required
-        - Must be between 1 and 280 characters
+- `thoughtText` - String - Required - Must be between 1 and 280 characters
 
-- `createdAt`
-        - Date
-        - Set default value to the current timestamp
-        - Use a getter method to format the timestamp on query
+- `createdAt` - Date - Set default value to the current timestamp - Use a getter method to format the timestamp on query
 
-- `username` (The user that created this thought)
-        - String
-        - Required
+- `username` (The user that created this thought) - String - Required
 
-- `reactions` (These are like replies)
-        - Array of nested documents created with the `reactionSchema`
+- `reactions` (These are like replies) - Array of nested documents created with the `reactionSchema`
 
 Schema Settings
 
@@ -73,23 +54,13 @@ Schema Settings
 
 #### `Reaction (SCHEMA ONLY)`
 
-- `reactionId`
-        - Use Mongoose's ObjectId data type
-        - Default value is set to a new ObjectId
+- `reactionId` - Use Mongoose's ObjectId data type - Default value is set to a new ObjectId
 
-- `reactionBody`
-        - String
-        - Required
-        - 280 character maximum
+- `reactionBody` - String - Required - 280 character maximum
 
-- `username`
-        - String
-        - Required
+- `username` - String - Required
 
-- `createdAt`
-        - Date
-        - Set default value to the current timestamp
-        - Use a getter method to format the timestamp on query
+- `createdAt` - Date - Set default value to the current timestamp - Use a getter method to format the timestamp on query
 
 Schema Settings
 
@@ -136,16 +107,36 @@ Schema Settings
 
 `/api/thoughts/:thoughtId/reactions`
 
-``POST`` to create a reaction stored in a single thought's `reactions` array field
+`POST` to create a reaction stored in a single thought's `reactions` array field
 
 `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
 
 ## Development work
 
-Created server and added code. 
+Created server and added code.
+
 - included requirements.
 - set the port 3006
 - set db connection to `'mongodb://localhost:27017/social-media'` like in module example.
 
 Create the model(s)
+
 - User as outlined above
+- Thought as outlined above
+- Reaction as outline above, within Thought model
+
+## Adding controllers.
+
+Using the same format as module project.
+
+- user-controllers
+- thought-controllers
+
+to separate code.
+
+Create routes
+
+- user-routes
+- thought-routes
+
+they work as calls to controllers
