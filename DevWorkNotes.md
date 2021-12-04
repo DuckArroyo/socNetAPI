@@ -144,3 +144,9 @@ to separate code.
 ## Infrastructure
 
 infrastructure is set but need to test, 500 errors are happening when testing routes. will revisit with fresh eyes.
+
+Research - mongoose
+useCreateIndex: true,
+useFindAndModify: false,
+
+updated all .thens to match

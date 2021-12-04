@@ -2,7 +2,10 @@ const { User } = require("../models/User");
 
 const userController = {
   getAllUser(req, res) {
-    User.find({})
+    User.find()
+      //! .populate({
+      //   path: "thoughts"
+      // })
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => {
         console.log(err);
@@ -11,10 +14,11 @@ const userController = {
   },
 
   getUserById({ params }, res) {
+    console.log(params);
     User.findOne({ _id: params.id })
       .then((dbUserData) => {
         if (!dbUserData) {
-          res.status(404).json({ message: "No Uer found with this ID!" });
+          res.status(404).json({ message: "No User found with this ID!" });
           return;
         }
         res.json(dbUserData);
@@ -25,36 +29,70 @@ const userController = {
       });
   },
 
-  createUser({ body }, res) {
-    console.log(body);
-    User.create(body)
-      .then((dbCreateUser) => res.json(dbCreateUser))
-      .catch((err) => res.satus(400).json(err));
-  },
-
-  updateUser({ params, body }, res) {
-    User.findOneAndUpdate({ _id: params.id }, body, {
-      new: true,
-      runValidators: true,
-    })
-      .then((dbUpdateUser) => {
-        if (!dbUpdateUser) {
+  //`/api/users/:userId/friends/:friendId`
+  getUserFriends({ params }, res) {
+    console.log(params);
+    User.findOne({ _id: params.id })
+      .populate({
+        path: "friends",
+      })
+      .then((dbUserData) => {
+        if (!dbUserData) {
           res.status(404).json({ message: "No User found with this ID!" });
           return;
         }
-        res.json(dbUpdateUser);
+        res.json(dbUserData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.satus(400).json(err);
+      });
+  },
+
+  createUser(req, res) {
+    console.log(req.body);
+    User.create(req.body)
+      .then((dbUserData) => res.json(dbUserData))
+      .catch((err) => res.satus(400).json(err));
+  },
+
+  //Update Thoughts
+  //Update Friends or should it be separate?
+  updateUser({ params, body }, res) {
+    console.log(params);
+    console.log(body);
+    User.findOneAndUpdate({ _id: params.id }, body, {
+      new: true,
+      //!runValidators: true,
+    })
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          res.status(404).json({ message: "No User found with this ID!" });
+          return;
+        }
+        res.json(dbUserData);
       })
       .catch((err) => res.status(400).json(err));
   },
 
+  //!Update friends list
+  addFriend({ params, body }, res) {
+    console.log(params);
+    console.log(body);
+  },
+
   deleteUser({ params }, res) {
+    console.log(params);
     User.findOneAndDelete({ _id: params.id })
-      .then((dbRemoveUser) => {
-        if (!dbRemoveUser) {
+      //! then find and delete thought
+      //! Could I call
+      //! removeThought()
+      .then((dbUserData) => {
+        if (!dbUserData) {
           res.status(404).json({ message: "No User found with this ID!" });
           return;
         }
-        res.json(dbRemoveUser);
+        res.json(dbUserData);
       })
       .catch((err) => res.status(400).json(err));
   },

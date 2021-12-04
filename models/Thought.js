@@ -7,8 +7,8 @@ const ReactionSchema = new Schema({
   },
   reactionBody: {
     type: String,
-    required: "You must select a reaction must be at least 1 character minimum!",
-    validate: [({ length }) => length >= 1, "Your reaction needs a message"],
+    required: "You must select a reaction must less than 280 characters!",
+    validate: [({ length }) => length <= 280, "Your reaction cannot exceed 280 characters"],
 
   },
   username: {
@@ -23,7 +23,11 @@ const ReactionSchema = new Schema({
 
 const ThoughtSchema = new Schema(
   {
-    thoughtText: {},
+    thoughtText: {
+      type: String,
+      required: "You must select a thought must be at least 1 character minimum!",
+      validate: [({ length }) => length >= 1, "Your thought needs a message"],
+    },
     createdAt: {
       type: Date,
       default: Date.now,
@@ -32,7 +36,7 @@ const ThoughtSchema = new Schema(
         type: String,
         required: true,
     },
-    reactions: [],
+    reactions: [ReactionSchema],
   },
   {
     toJSON: {
@@ -46,7 +50,7 @@ ThoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
-// Crate Comment model
+// Create Comment model
 const Thought = model("Thought", ThoughtSchema);
 
 module.exports = Thought;

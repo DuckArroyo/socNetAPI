@@ -4,6 +4,9 @@ const express = require("express");
 // Require mongoose
 const mongoose = require("mongoose");
 
+// Require the route and pass below
+const routes = require("./routes");
+
 // Declare app for express
 const app = express();
 
@@ -15,7 +18,7 @@ app.use(express.json());
 //manages payload
 app.use(express.urlencoded({ extended: true }));
 //Connects to routes dir
-app.use(require("./routes"));
+app.use(routes);
 
 // Mongoose functions/connection to social-media db
 mongoose.connect(
@@ -23,6 +26,8 @@ mongoose.connect(
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    //useCreateIndex: true,
+    //useFindAndModify: false,
   }
 );
 

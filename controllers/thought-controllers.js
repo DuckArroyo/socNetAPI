@@ -2,6 +2,7 @@ const { Thought, User } = require("../models/Thought");
 
 const thoughtController = {
   addThought({ params }, res) {
+    console.log(params);
     console.log(body);
 
     Thought.create(body)
@@ -29,6 +30,7 @@ const thoughtController = {
   },
 
   addReaction({ params, body }, res) {
+    console.log(params);
     console.log(body);
 
     Thought.findOneAndUpdate(
