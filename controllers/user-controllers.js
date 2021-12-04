@@ -29,7 +29,7 @@ const userController = {
       });
   },
 
-  //`/api/users/:userId/friends/:friendId`
+  //!`/api/users/:userId/friends/:friendId`
   getUserFriends({ params }, res) {
     console.log(params);
     User.findOne({ _id: params.id })
@@ -97,5 +97,7 @@ const userController = {
       .catch((err) => res.status(400).json(err));
   },
 };
+
+
 
 module.exports = userController;

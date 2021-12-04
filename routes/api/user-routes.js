@@ -7,7 +7,7 @@ const {
   createUser,
   updateUser,
   deleteUser,
-} = require("../controllers/user-controllers");
+} = require("../../controllers/user-controllers");
 
 //Routes that do not require id
 router

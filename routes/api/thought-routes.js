@@ -7,7 +7,7 @@ const {
   //Reaction actions
   addReaction,
   removeReaction,
-} = require("../controllers/thought-controllers");
+} = require("../../controllers/thought-controllers");
 
 router
 
