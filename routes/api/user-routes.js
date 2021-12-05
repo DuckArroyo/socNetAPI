@@ -3,10 +3,11 @@ const router = require("express").Router();
 const {
   getAllUser,
   getUserById,
-  getUserFriends,
+  addUserFriends,
   createUser,
   updateUser,
   deleteUser,
+  removeUserFriends,
 } = require("../../controllers/user-controllers");
 
 //Routes that do not require id
@@ -33,6 +34,8 @@ router
 
   .route("./:userId/friends/:friendId")
 
-  .put(getUserFriends);
+  .post(addUserFriends)
+
+  .delete(removeUserFriends);
 
 module.exports = router;

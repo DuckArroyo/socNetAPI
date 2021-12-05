@@ -11,7 +11,7 @@ const {
 
 router
 
-  .route("/:thoughtId")
+  .route("/")
 
   .post(addThought);
 
