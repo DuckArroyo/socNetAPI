@@ -3,9 +3,7 @@ const { User, Thought } = require("../models");
 const userController = {
   getAllUser(req, res) {
     User.find()
-      .populate({
-        path: "thoughts",
-      })
+      .populate({ path: "thoughts" })
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => {
         console.log(err);

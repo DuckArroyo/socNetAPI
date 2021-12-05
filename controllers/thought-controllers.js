@@ -1,14 +1,47 @@
 const { Thought, User } = require("../models");
 
 const thoughtController = {
+  getAllThought(req, res) {
+    console.log("=================Get all Thought");
+
+    Thought.find()
+      // .populate({ path: "user" })
+      .then((dbThoughtData) => res.json(dbThoughtData))
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  },
+
+  getThoughtById({ params }, res) {
+    console.log("=================Get Thought by Id");
+    console.log("=================params: ", params);
+
+    Thought.findOne({ _id: params.id })
+      .then((dbThoughtData) => {
+        if (!dbThoughtData) {
+          res
+            .status(404)
+            .json({ message: "No Thought was found with this ID" });
+          return;
+        }
+        res.json(dbThoughtData);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(400).json(err);
+      });
+  },
+
   addThought(req, res) {
+    console.log("req.body=================", req.body);
+    console.log("params=================", req.body);
+
     Thought.create(req.body)
 
       .then((dbThoughtData) => {
-        console.log("=================", req.body);
-
         return User.findOneAndUpdate(
-          { _id: dbUserData._id },
+          { userName: dbUserData.userName },
           { $addToSet: { thoughts: dbThoughtData._id } },
           { new: true }
         );
@@ -52,19 +85,19 @@ const thoughtController = {
   },
 
   removeThought({ params }, res) {
-    console.log(body);
+    console.log("=================", req.body);
 
     Thought.findOneAndDelete({ _id: params.thoughtId })
 
-      .then((dbRemoveThought) => {
-        if (!dbRemoveThought) {
+      .then((dbThoughtData) => {
+        if (!dbThoughtData) {
           res
             .status(404)
             .json({ message: "Did not find thought with this ID" });
           return;
         }
 
-        res.json(dbRemoveThought);
+        res.json(dbThoughtData);
       })
 
       .catch((err) => res.json(err));
@@ -77,7 +110,7 @@ const thoughtController = {
       { _id: params.thoughtId },
       { $pull: { reaction: { reactionId: params.reactionId } } },
       { new: true }
-    )
+    );
 
     User.findOneAndUpdate(
       { _id: params.thoughtId },
