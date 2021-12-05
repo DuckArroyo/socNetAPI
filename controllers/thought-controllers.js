@@ -9,7 +9,7 @@ const thoughtController = {
 
         return User.findOneAndUpdate(
           { _id: dbUserData._id },
-          { $push: { thoughts: dbThoughtData._id } },
+          { $addToSet: { thoughts: dbThoughtData._id } },
           { new: true }
         );
       })
