@@ -5,6 +5,7 @@ const {
   getAllThought,
   getThoughtById,
   addThought,
+  updateThought,
   removeThought,
   //Reaction actions
   addReaction,
@@ -17,17 +18,21 @@ router
 
   .get(getAllThought)
 
+  //Add a thought to user
   .post(addThought);
 
 router
 
   .route("/:id")
 
-  .get(getThoughtById);
+  .get(getThoughtById)
+  
+  .put(updateThought);
 
 router
 
   .route("/:userId/:thoughtId")
+
 
   .put(addReaction)
 

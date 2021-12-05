@@ -33,16 +33,16 @@ const thoughtController = {
       });
   },
 
+  //!Posting but not connecting to User
   addThought(req, res) {
     console.log("req.body=================", req.body);
-    console.log("params=================", req.body);
 
     Thought.create(req.body)
 
       .then((dbThoughtData) => {
         return User.findOneAndUpdate(
           { userName: dbUserData.userName },
-          { $addToSet: { thoughts: dbThoughtData._id } },
+          { $push: { thoughts: dbThoughtData._id } },
           { new: true }
         );
       })
@@ -57,6 +57,49 @@ const thoughtController = {
 
         res.json({ message: "Thought was successfully created!" });
       })
+      .catch((err) => res.json(err));
+  },
+
+  updateThought({ params, body }, res) {
+    console.log("params=================", params);
+    console.log("body=================", body);
+
+    Thought.findOneAndUpdate(
+      { _id: params.id },
+      { thoughtText: body.thoughtText },
+      { new: true }
+    )
+
+      .then((dbThoughtData) => {
+        if (!dbThoughtData) {
+          res
+            .status(404)
+            .json({ message: "Did not find thought with this ID" });
+          return;
+        }
+
+        res.json(dbThoughtData);
+      })
+
+      .catch((err) => res.json(err));
+  },
+
+  removeThought({ params }, res) {
+    console.log("=================", req.body);
+
+    Thought.findOneAndDelete({ _id: params.thoughtId })
+
+      .then((dbThoughtData) => {
+        if (!dbThoughtData) {
+          res
+            .status(404)
+            .json({ message: "Did not find thought with this ID" });
+          return;
+        }
+
+        res.json(dbThoughtData);
+      })
+
       .catch((err) => res.json(err));
   },
 
@@ -81,25 +124,6 @@ const thoughtController = {
 
         res.json(dbThoughtData);
       })
-      .catch((err) => res.json(err));
-  },
-
-  removeThought({ params }, res) {
-    console.log("=================", req.body);
-
-    Thought.findOneAndDelete({ _id: params.thoughtId })
-
-      .then((dbThoughtData) => {
-        if (!dbThoughtData) {
-          res
-            .status(404)
-            .json({ message: "Did not find thought with this ID" });
-          return;
-        }
-
-        res.json(dbThoughtData);
-      })
-
       .catch((err) => res.json(err));
   },
 
