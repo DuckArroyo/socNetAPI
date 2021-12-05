@@ -132,8 +132,6 @@ Using the same format as module project.
 - user-controllers
 - thought-controllers
 
-to separate code.
-
 ## Create routes
 
 - user-routes
@@ -142,8 +140,6 @@ to separate code.
   they work as calls to controllers
 
 ## Infrastructure
-
-infrastructure is set but need to test, 500 errors are happening when testing routes. will revisit with fresh eyes.
 
 Research - mongoose
 useCreateIndex: true,

@@ -84,15 +84,19 @@ const userController = {
       });
   },
 
-  //Update Thoughts
-  //Update Friends or should it be separate?
   updateUser({ params, body }, res) {
-    console.log(params);
-    console.log(body);
-    User.findOneAndUpdate({ _id: params.id }, body, {
-      new: true,
-      //!runValidators: true,
-    })
+    console.log("params: ", params.id);
+    console.log("body.userName: ", body.userName);
+    console.log("body.email: ", body.email);
+
+    User.findOneAndUpdate(
+      { _id: params.id },
+      { userName: body.userName, email: body.email },
+      {
+        new: true,
+        runValidators: true,
+      }
+    )
       .then((dbUserData) => {
         if (!dbUserData) {
           res.status(404).json({ message: "No User found with this ID!" });
