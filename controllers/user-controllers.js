@@ -29,6 +29,13 @@ const userController = {
       });
   },
 
+  createUser(req, res) {
+    console.log(req.body);
+    User.create(req.body)
+      .then((dbUserData) => res.json(dbUserData))
+      .catch((err) => res.satus(400).json(err));
+  },
+
   addUserFriends({ params }, res) {
     console.log("id", params.userId);
     console.log("friendId", params.friendId);
@@ -45,7 +52,7 @@ const userController = {
         if (!dbUserData) {
           res.status(404).json({ message: "No User found with this ID!" });
           return;
-        } 
+        }
         res.json(dbUserData);
       })
       .catch((err) => {
@@ -54,12 +61,13 @@ const userController = {
       });
   },
 
-  removeUserFriends(req, res) {
-    console.log(req);
+  removeUserFriends({ params }, res) {
+    console.log("params.userId: ", params.userId);
+    console.log("params.friendId: ", params.friendId);
 
     User.findOneAndUpdate(
-      { _id: req.id },
-      { $pull: { friends: req.body.friendId } },
+      { _id: params.userId },
+      { $pull: { friends: params.friendId } },
       { new: true }
     )
 
@@ -74,13 +82,6 @@ const userController = {
         console.log(err);
         res.satus(400).json(err);
       });
-  },
-
-  createUser(req, res) {
-    console.log(req.body);
-    User.create(req.body)
-      .then((dbUserData) => res.json(dbUserData))
-      .catch((err) => res.satus(400).json(err));
   },
 
   //Update Thoughts
