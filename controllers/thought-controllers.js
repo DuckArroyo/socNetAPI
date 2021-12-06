@@ -107,6 +107,8 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
 
+  //!Not connecting the date to Thought
+  //It is posting
   addReaction({ params, body }, res) {
     console.log("=================Add Reaction");
 
@@ -118,7 +120,7 @@ const thoughtController = {
       //Possibly body needs to be more specific
       { $push: { reactions: body.reactionBody } },
       { new: true, runValidators: true }
-    ).
+    )
 
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
@@ -133,20 +135,19 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
 
+  //Cant verify posting
   removeReaction({ params }, res) {
-    console.log(body);
+    console.log("=================remove Reaction");
 
-    Thought.findOneAndRemove(
-      { _id: params.thoughtId },
-      { $pull: { reaction: { reactionId: params.reactionId } } },
-      { new: true }
-    );
+    console.log("thoughtId=================", params.thoughtId);
+    console.log("reactionId=================", params.reactionId);
 
-    User.findOneAndUpdate(
-      { _id: params.thoughtId },
+    Thought.findOneAndUpdate(
+      { id: params.thoughtId },
       { $pull: { reaction: { reactionId: params.reactionId } } },
       { new: true }
     )
+
       .then((dbUserData) => {
         if (!dbUserData) {
           res
