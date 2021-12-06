@@ -148,3 +148,7 @@ useFindAndModify: false,
 TO DO
 
 //!create a formatter file for the date
+
+//! User controllers - on user delete, remove associated thoughts.
+
+//! Thought controllers - on thought delete, remove associated reactions.

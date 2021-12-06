@@ -26,17 +26,16 @@ router
   .route("/:id")
 
   .get(getThoughtById)
-  
-  .put(updateThought);
+
+  .put(updateThought)
+
+  .delete(removeThought);
 
 router
 
-  .route("/:userId/:thoughtId")
+  .route("/:thoughtId/reactions")
 
-
-  .put(addReaction)
-
-  .delete(removeThought);
+  .put(addReaction);
 
 router
 

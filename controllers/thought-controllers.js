@@ -84,10 +84,15 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
 
+  //! Delete associated reactions
+  //!https://mongoosejs.com/docs/subdocs.html#adding-subdocs-to-arrays
   removeThought({ params }, res) {
-    console.log("=================", req.body);
+    console.log("params=================", params);
 
-    Thought.findOneAndDelete({ _id: params.thoughtId })
+    Thought.findOneAndDelete({ _id: params.id })
+      //! Delete associated reactions
+      //Not tested becaue there are no reactions yet.
+      //.remove(reactions)
 
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
@@ -96,7 +101,6 @@ const thoughtController = {
             .json({ message: "Did not find thought with this ID" });
           return;
         }
-
         res.json(dbThoughtData);
       })
 
@@ -104,21 +108,23 @@ const thoughtController = {
   },
 
   addReaction({ params, body }, res) {
-    console.log(params);
-    console.log(body);
+    console.log("=================Add Reaction");
+
+    console.log("params=================", params.thoughtId);
+    console.log("body=================", body.reactionBody);
 
     Thought.findOneAndUpdate(
-      { _id: req.params.thoughtId },
+      { id: params.thoughtId },
       //Possibly body needs to be more specific
-      { $push: { reaction: body } },
+      { $push: { reactions: body.reactionBody } },
       { new: true, runValidators: true }
-    )
+    ).
 
       .then((dbThoughtData) => {
         if (!dbThoughtData) {
           res
             .status(404)
-            .json({ message: "Did not find reaction with this ID" });
+            .json({ message: "Did not find thought with this ID" });
           return;
         }
 
