@@ -5,7 +5,8 @@ const thoughtController = {
     console.log("=================Get all Thought");
 
     Thought.find()
-      // .populate({ path: "user" })
+      .select("-__v")
+      .sort({ _id: -1 })
       .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => {
         console.log(err);
@@ -106,8 +107,6 @@ const thoughtController = {
           dbUserData.thoughtId
         );
 
-
-        
         res.json(dbThoughtData);
       })
       .catch((err) => res.json(err));

@@ -18,7 +18,6 @@ router
 
   .get(getAllThought)
 
-  //Add a thought to user
   .post(addThought);
 
 router
@@ -41,6 +40,6 @@ router
 
   .route("/:thoughtId/reactions/:reactionId")
 
-  .put(removeReaction);
+  .delete(removeReaction);
 
 module.exports = router;

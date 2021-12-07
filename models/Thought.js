@@ -8,9 +8,9 @@ const ReactionSchema = new Schema(
     },
     reactionBody: {
       type: String,
-      required: "You must select a reaction must less than 280 characters!",
+      required: "You must select a reaction must be less than 280 characters!",
       //minlength and maxlength can be added as separate lines
-      minlegth: 1,
+      minlength: 1,
       maxlength: 280,
     },
     userName: {
@@ -36,10 +36,9 @@ const ThoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
-      required:
-        "You must select a thought must be at least 1 character minimum!",
+      required: "You must select a thought must be less than 280 characters!",
       //minlength and maxlength can be added as separate lines
-      minlegth: 1,
+      minlength: 1,
       maxlength: 280,
     },
     createdAt: {
