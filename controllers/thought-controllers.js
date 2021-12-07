@@ -33,30 +33,31 @@ const thoughtController = {
       });
   },
 
-  //!Posting but not connecting to User
   addThought(req, res) {
     console.log("req.body=================", req.body);
 
     Thought.create(req.body)
 
       .then((dbThoughtData) => {
-        return User.findOneAndUpdate(
-          { userName: dbUserData.userName },
+        console.log(dbThoughtData);
+
+        User.findOneAndUpdate(
+          { userName: dbThoughtData.userName },
           { $push: { thoughts: dbThoughtData._id } },
           { new: true }
-        );
+        ).then((dbUserData) => {
+          console.log(dbUserData);
+          if (!dbUserData) {
+            res
+              .status(404)
+              .json({ message: "Could not find user with this ID!" });
+            return;
+          }
+
+          res.json({ message: "Thought was successfully created!" });
+        });
       })
 
-      .then((dbUserData) => {
-        if (!dbUserData) {
-          res
-            .status(404)
-            .json({ message: "Could not find user with this ID!" });
-          return;
-        }
-
-        res.json({ message: "Thought was successfully created!" });
-      })
       .catch((err) => res.json(err));
   },
 
@@ -107,22 +108,21 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
 
-  //!Not connecting the date to Thought
-  //It is posting
   addReaction({ params, body }, res) {
     console.log("=================Add Reaction");
 
     console.log("params=================", params.thoughtId);
-    console.log("body=================", body.reactionBody);
+    console.log("body=================", body);
 
     Thought.findOneAndUpdate(
       { id: params.thoughtId },
       //Possibly body needs to be more specific
-      { $push: { reactions: body.reactionBody } },
+      { $push: { reactions: body } },
       { new: true, runValidators: true }
     )
 
       .then((dbThoughtData) => {
+        console.log(dbThoughtData);
         if (!dbThoughtData) {
           res
             .status(404)

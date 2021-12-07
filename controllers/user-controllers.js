@@ -3,7 +3,7 @@ const { User, Thought } = require("../models");
 const userController = {
   getAllUser(req, res) {
     User.find()
-      .populate({ path: "thoughts" })
+      .populate({ path: "thoughts", select: "-__v" })
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => {
         console.log(err);
@@ -14,6 +14,7 @@ const userController = {
   getUserById({ params }, res) {
     console.log(params);
     User.findOne({ _id: params.id })
+      .populate({ path: "thoughts", select: "-__v" })
       .then((dbUserData) => {
         if (!dbUserData) {
           res.status(404).json({ message: "No User found with this ID!" });
@@ -104,21 +105,25 @@ const userController = {
       })
       .catch((err) => res.status(400).json(err));
   },
-    //! Removing associated thought Not working
+  //! Removing associated thought Not working
   deleteUser({ params }, res) {
     console.log("params.id: ", params.id);
-    console.log("params.thoughts: ", params.thoughts);
 
     //! Not working
-    //!Thought.deleteMany({ _id: params.id, thoughts: params.thoughts });
+
     //!https://mongoosejs.com/docs/subdocs.html#adding-subdocs-to-arrays
     User.findOneAndDelete({ _id: params.id })
-      //.remove(thoughts)
       .then((dbUserData) => {
+        console.log(dbUserData);
         if (!dbUserData) {
           res.status(404).json({ message: "No User found with this ID!" });
           return;
         }
+
+        Thought.deleteMany(
+          { _id: dbUserData }
+          // { $pull: { thoughts } }
+        );
         res.json(dbUserData);
       })
       .catch((err) => res.status(400).json(err));
