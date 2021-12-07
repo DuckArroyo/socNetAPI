@@ -114,16 +114,21 @@ const userController = {
     //!https://mongoosejs.com/docs/subdocs.html#adding-subdocs-to-arrays
     User.findOneAndDelete({ _id: params.id })
       .then((dbUserData) => {
-        console.log(dbUserData);
+        console.log("@findOneAndDelete: ", dbUserData);
         if (!dbUserData) {
           res.status(404).json({ message: "No User found with this ID!" });
           return;
         }
+console.log("===============afterIf");
+console.log("===============dbUSerData.thoughts: ", dbUserData.thoughts);
 
         Thought.deleteMany(
-          { _id: dbUserData }
-          // { $pull: { thoughts } }
+          { _id: dbUserData.thoughts },
+          { $pull: { thoughts: dbUserData.thoughts } }
         );
+console.log("===============afterDeleteMany");
+console.log("===============dbUSerData: ", dbUserData.thoughts);
+
         res.json(dbUserData);
       })
       .catch((err) => res.status(400).json(err));
