@@ -105,29 +105,30 @@ const userController = {
       })
       .catch((err) => res.status(400).json(err));
   },
-  //! Removing associated thought Not working
+
   deleteUser({ params }, res) {
     console.log("params.id: ", params.id);
 
-    //! Not working
-
-    //!https://mongoosejs.com/docs/subdocs.html#adding-subdocs-to-arrays
     User.findOneAndDelete({ _id: params.id })
+    
       .then((dbUserData) => {
         console.log("@findOneAndDelete: ", dbUserData);
+
         if (!dbUserData) {
           res.status(404).json({ message: "No User found with this ID!" });
           return;
         }
-console.log("===============afterIf");
-console.log("===============dbUSerData.thoughts: ", dbUserData.thoughts);
+
+        console.log("===============afterIf");
+        console.log(
+          "===============dbUSerData.thoughtId: ",
+          dbUserData.thoughtId
+        );
 
         Thought.deleteMany(
           { _id: dbUserData.thoughts },
-          { $pull: { thoughts: dbUserData.thoughts } }
+          { $pull: { thoughts: { thoughtId: dbUserData.thoughts } } }
         );
-console.log("===============afterDeleteMany");
-console.log("===============dbUSerData: ", dbUserData.thoughts);
 
         res.json(dbUserData);
       })

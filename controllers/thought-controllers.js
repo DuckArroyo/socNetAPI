@@ -85,26 +85,31 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
 
-  //! Delete associated reactions
-  //!https://mongoosejs.com/docs/subdocs.html#adding-subdocs-to-arrays
   removeThought({ params }, res) {
-    console.log("params=================", params);
+    console.log("=================params.id: ", params.id);
 
     Thought.findOneAndDelete({ _id: params.id })
-      //! Delete associated reactions
-      //Not tested becaue there are no reactions yet.
-      //.remove(reactions)
 
       .then((dbThoughtData) => {
+        console.log("@findOneAndDelete: ", dbThoughtData);
+
         if (!dbThoughtData) {
           res
             .status(404)
             .json({ message: "Did not find thought with this ID" });
           return;
         }
+
+        console.log("===============afterIf");
+        console.log(
+          "===============dbUSerData.thoughtId: ",
+          dbUserData.thoughtId
+        );
+
+
+        
         res.json(dbThoughtData);
       })
-
       .catch((err) => res.json(err));
   },
 
