@@ -20,18 +20,18 @@ To see my development notes visit [DevWorkNotes.md](https://github.com/DuckArroy
 
 ## Graded criteria
 
-- Models must be defined
-- Schema as needed
+- Models must be defined - DONE
+- Schema as needed - DONE
 - API User Routes
-  - api/users (GET, GET /:id, POST, PUT, DELETE)
-  - Bonus: Remove a user's associated thoughts when deleted.
+  - api/users (GET, GET /:id, POST, PUT, DELETE) - DONE
+  - Bonus: Remove a user's associated thoughts when deleted. - DONE
 - API Friends Routes
-  - /api/users/:userId/friends/:friendId
+  - /api/users/:userId/friends/:friendId - DONE
   - POST, DELETE
 - API Thoughts routes
-  - /api/thoughts (GET, GET /:id, POST, PUT, DELETE)
+  - /api/thoughts (GET, GET /:id, POST, PUT, DELETE) - DONE
 - API Thought reaction routes
-  - /api/thoughts/:thoughtId/reactions
+  - /api/thoughts/:thoughtId/reactions - DONE
   - POST, DELETE
 
 Video Walkthrough - Link
