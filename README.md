@@ -10,7 +10,7 @@ This project is backend only, not published.
 
 Github Repository [Link](https://github.com/DuckArroyo/challenge18)
 
-Video Walkthrough [Link]()
+Video Walkthrough [Link](https://watch.screencastify.com/v/qpWt28rjFCBfXBcLvQJ3)
 
 ## Description
 
