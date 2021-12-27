@@ -10,7 +10,7 @@ UO Coding bootcamp Challenge 18
 
 This project is backend only, not published.
 
-Github Repository [Link](https://github.com/DuckArroyo/socNetAPI)
+[Github Repository](https://github.com/DuckArroyo/socNetAPI)
 
 [Video Walkthrough](https://watch.screencastify.com/v/qpWt28rjFCBfXBcLvQJ3)
 
@@ -74,5 +74,3 @@ DeveloperDuckArroyo
 [CodePen](https://codepen.io/DeveloperDuckArroyo)
 
 # Screnshots
-
-<img src="./.png" style="width: 400px">
