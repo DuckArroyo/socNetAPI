@@ -2,13 +2,15 @@
 
 ![GitHublicense](https://img.shields.io/npm/l/express?style=for-the-badge)
 
-## UO Coding bootcamp Challenge 18
+## UO Coding bootcamp Challenge
+
+UO Coding bootcamp Challenge 18
 
 ## Links
 
 This project is backend only, not published.
 
-Github Repository [Link](https://github.com/DuckArroyo/challenge18)
+Github Repository [Link](https://github.com/DuckArroyo/socNetAPI)
 
 Video Walkthrough [Link](https://watch.screencastify.com/v/qpWt28rjFCBfXBcLvQJ3)
 
@@ -16,7 +18,7 @@ Video Walkthrough [Link](https://watch.screencastify.com/v/qpWt28rjFCBfXBcLvQJ3)
 
 Create an API for a social network web application. The application will use MongoDB database and Mongoose ODM., and JavaScript.
 
-To see my development notes visit [DevWorkNotes.md](https://github.com/DuckArroyo/challenge18/blob/main/DevWorkNotes.md)
+To see my development notes visit [DevWorkNotes.md](https://github.com/DuckArroyo/socNetAPI/blob/main/DevWorkNotes.md)
 
 ## Graded criteria
 
@@ -57,17 +59,19 @@ Mongoose - npm install mongoose
 
 DeveloperDuckArroyo
 
-[Portfolio](https://duckarroyo.github.io/challenge2/)
+[Email](mailto:DeveloperDuckArroyo@gmail.com)
+
+[Portfolio](https://github.com/DuckArroyo/portfolio)
+
+[React Portfolio](http://DuckArroyo.github.io/reactPortfolio)
 
 [GitHub](https://github.com/DuckArroyo)
 
 [Twitter @DevDuckArroyo](https://twitter.com/DevDuckArroyo)
 
-[LinkeIn](https://www.linkedin.com/in/duckarroyo/)
+[LinkedIn](https://www.linkedin.com/in/duckarroyo)
 
 [CodePen](https://codepen.io/DeveloperDuckArroyo)
-
-[Email](mailto:DeveloperDuckArroyo@gmail.com)
 
 # Screnshots
 
