@@ -12,7 +12,7 @@ This project is backend only, not published.
 
 Github Repository [Link](https://github.com/DuckArroyo/socNetAPI)
 
-Video Walkthrough [Link](https://watch.screencastify.com/v/qpWt28rjFCBfXBcLvQJ3)
+[Video Walkthrough](https://watch.screencastify.com/v/qpWt28rjFCBfXBcLvQJ3)
 
 ## Description
 
